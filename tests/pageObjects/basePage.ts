@@ -73,7 +73,7 @@ export class BasePage {
      * @param params.urlToWaitFor - url to wait for
      * @returns Promise<void>
      */
-    async clickToNavigate({locatorToClick, urlToWaitFor}: {locatorToClick: Locator, urlToWaitFor: string}) {
+    async clickToNavigate(locatorToClick: Locator, urlToWaitFor: string) {
         await locatorToClick.click();
         return await this.page.waitForURL(urlToWaitFor);
     }
