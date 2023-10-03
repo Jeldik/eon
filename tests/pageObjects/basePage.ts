@@ -11,17 +11,6 @@ export class BasePage {
     }
 
     /**
-     * Abstarction for Playwright's page.goto() method.
-     * Visit given URL and returns a promise that resolves when the page navigates to a new URL.
-     * @param url - url of the page to visit
-     * @param options - options for `page.goto()` method
-     * @returns Promise<void>
-     */
-    async visit(url: string, options?: Partial<GoToOptions>){
-        await this.page.goto(url, options);
-    }
-
-    /**
      * Abstarction for Playwright's page.reload() method.
      * Waits until `domcontentloaded` event is fired.
      * @returns Promise<void>

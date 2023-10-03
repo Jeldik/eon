@@ -27,7 +27,7 @@ test.describe('Home page basic tests', () => {
 
         test('Go to about us', async ({ page }) => {
             const homePage = new HomePage(page);
-            await homePage.header.clickToNavigate(homePage.header.locatorStationMap, 'https://www.eon-drive.cz/o-nas/');
+            await homePage.header.clickToNavigate(homePage.header.locatorAboutUs, 'https://www.eon-drive.cz/o-nas/');
             await expect(page).toHaveTitle(ABOUT_US_TITLE);
         });
     });
