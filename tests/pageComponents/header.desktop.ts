@@ -8,5 +8,4 @@ export class HeaderDesktop extends BasePage {
    public readonly locatorContacts: Locator = this.page.locator("#menu-item-35");
    public readonly locatorIWantCharger: Locator = this.page.locator("#header-buttons > a[href='/produkty/']");
    public readonly locatorForDrivers: Locator = this.page.locator("#header-buttons > a[href='/pro-ridice/']");
-
 }

@@ -24,6 +24,10 @@ test.describe('Home page basic tests', () => {
         await expect(page).toHaveTitle(TITLE_HOME_PAGE);
     });
 
+    test('H1 is visible', async () => {
+        await homePage.isElementVisible(homePage.LocatorH1);
+    });
+
     test.describe('Navigation tests', () => {
         test('Go to station map', async ({ page, baseURL }) => {
             await homePage.header.clickToNavigate(homePage.header.locatorStationMap, `${baseURL}` + 'mapa/');
@@ -56,7 +60,7 @@ test.describe('Home page basic tests', () => {
         await homePage.LocatorInputEmail.fill('tomas.jelinek@hotmail.cz');
         await homePage.LocatorInputPhone.fill('732 183 674');
         await homePage.LocatorInputMessage.fill('Need help with testing');
-        await homePage.LocatorCheckboxPrivacy.check();
+        await homePage.LocatorCheckboxPrivacy.check({ force: true });
         expect(await homePage.LocatorCheckboxPrivacy.isChecked()).toBeTruthy();
 
         // await homePage.LocatorSendBtn.click();
