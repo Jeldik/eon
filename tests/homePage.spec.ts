@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from './pageObjects/homePage.desktop';
+import exp from 'constants';
 
 let homePage: HomePage;
 
@@ -75,5 +76,9 @@ test.describe('Home page basic tests', () => {
         await homePage.LocatorSendBtn.click();
 
         await page.locator('input[name="privacy"[required]');
+    });
+
+    test('Visual test', async ({ page }) => {
+        await expect(page).toHaveScreenshot();
     });
 });

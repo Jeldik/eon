@@ -11,15 +11,6 @@ export class BasePage {
     }
 
     /**
-     * Abstarction for Playwright's page.reload() method.
-     * Waits until `domcontentloaded` event is fired.
-     * @returns Promise<void>
-     */
-    async reload() {
-        await this.page.reload({ waitUntil: "domcontentloaded" });
-    }
-
-    /**
      * Checks if element is visible.
      * @param locator - locator of the element to check
      * @param timeout - how long to wait for the element to be visible
