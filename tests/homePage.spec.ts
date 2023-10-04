@@ -1,13 +1,19 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from './pageObjects/homePage.desktop';
-import exp from 'constants';
+import { StationMapPage } from './pageObjects/stationMapPage.desktop';
+import { AboutUsPage } from './pageObjects/aboutUsPage.desktop';
+import { ContactsPage } from './pageObjects/contactsPage.desktop';
+import { ProductsPage } from './pageObjects/productsPage.desktop';
+import { ForDriversPage } from './pageObjects/forDriversPage.desktop';
 
 let homePage: HomePage;
+let stationMapPage: StationMapPage;
+let aboutUsPage: AboutUsPage;
+let contactsPage: ContactsPage;
+let productsPage: ProductsPage;
+let forDriversPage: ForDriversPage
 
 test.describe('Home page basic tests', () => {
-    const TITLE_HOME_PAGE = 'E.ON Drive - Váš partner pro elektromobilitu';
-    const TITLE_STATION_MAP = 'Mapa stanic a dobíjení | EON Drive';
-    const TITLE_ABOUT_US = 'O nás - E.ON Drive';
     const TITLE_CONTACTS = 'Kontakt - E.ON Drive';
     const TITLE_PRODUCTS = 'Produkty - E.ON Drive';
     const TITLE_FOR_DRIVERS = 'Pro řidiče - E.ON Drive';
@@ -22,7 +28,7 @@ test.describe('Home page basic tests', () => {
     });
 
     test('has specific title', async ({ page }) => {
-        await expect(page).toHaveTitle(TITLE_HOME_PAGE);
+        await expect(page).toHaveTitle(homePage.TITLE);
     });
 
     test('H1 is visible', async () => {
@@ -31,28 +37,33 @@ test.describe('Home page basic tests', () => {
 
     test.describe('Navigation tests', () => {
         test('Go to station map', async ({ page, baseURL }) => {
+            stationMapPage = new StationMapPage(page);
             await homePage.header.clickToNavigate(homePage.header.locatorStationMap, `${baseURL}` + 'mapa/');
-            await expect(page).toHaveTitle(TITLE_STATION_MAP);
+            await expect(page).toHaveTitle(stationMapPage.TITLE);
         });
 
         test('Go to about us', async ({ page, baseURL }) => {
+            aboutUsPage = new AboutUsPage(page);
             await homePage.header.clickToNavigate(homePage.header.locatorAboutUs, `${baseURL}` + 'o-nas/');
-            await expect(page).toHaveTitle(TITLE_ABOUT_US);
+            await expect(page).toHaveTitle(aboutUsPage.TITLE);
         });
 
         test('Go to contacts', async ({ page, baseURL }) => {
+            contactsPage = new ContactsPage(page);
             await homePage.header.clickToNavigate(homePage.header.locatorContacts, `${baseURL}` + 'kontakt/');
-            await expect(page).toHaveTitle(TITLE_CONTACTS);
+            await expect(page).toHaveTitle(contactsPage.TITLE);
         });
 
         test('Go to products', async ({ page, baseURL }) => {
+            productsPage = new ProductsPage(page);
             await homePage.header.clickToNavigate(homePage.header.locatorIWantCharger, `${baseURL}` + 'produkty/');
-            await expect(page).toHaveTitle(TITLE_PRODUCTS);
+            await expect(page).toHaveTitle(productsPage.TITLE);
         });
 
         test('Go to for drivers', async ({ page, baseURL }) => {
+            forDriversPage = new ForDriversPage(page);
             await homePage.header.clickToNavigate(homePage.header.locatorForDrivers, `${baseURL}` + 'pro-ridice/');
-            await expect(page).toHaveTitle(TITLE_FOR_DRIVERS);
+            await expect(page).toHaveTitle(forDriversPage.TITLE);
         });
     });
 
