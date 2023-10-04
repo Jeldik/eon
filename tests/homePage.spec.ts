@@ -14,10 +14,6 @@ let productsPage: ProductsPage;
 let forDriversPage: ForDriversPage
 
 test.describe('Home page basic tests', () => {
-    const TITLE_CONTACTS = 'Kontakt - E.ON Drive';
-    const TITLE_PRODUCTS = 'Produkty - E.ON Drive';
-    const TITLE_FOR_DRIVERS = 'Pro řidiče - E.ON Drive';
-
     test.beforeEach(async ({ page }) => {
         await page.goto('/');
         homePage = new HomePage(page);
