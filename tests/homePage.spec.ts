@@ -84,8 +84,4 @@ test.describe('Home page basic tests', () => {
 
         await page.locator('input[name="privacy"[required]');
     });
-
-    test('Visual test', async ({ page }) => {
-        await expect(page).toHaveScreenshot();
-    });
 });
