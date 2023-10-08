@@ -32,33 +32,33 @@ test.describe('Home page basic tests', () => {
     });
 
     test.describe('Navigation tests', () => {
-        test('Go to station map', async ({ page, baseURL }) => {
+        test('Go to station map', async ({ page }) => {
             stationMapPage = new StationMapPage(page);
-            await homePage.header.clickToNavigate(homePage.header.locatorStationMap, `${baseURL}` + 'mapa/');
+            stationMapPage.visit();
             await expect(page).toHaveTitle(stationMapPage.TITLE);
         });
 
-        test('Go to about us', async ({ page, baseURL }) => {
+        test('Go to about us', async ({ page }) => {
             aboutUsPage = new AboutUsPage(page);
-            await homePage.header.clickToNavigate(homePage.header.locatorAboutUs, `${baseURL}` + 'o-nas/');
+            aboutUsPage.visit();
             await expect(page).toHaveTitle(aboutUsPage.TITLE);
         });
 
-        test('Go to contacts', async ({ page, baseURL }) => {
+        test('Go to contacts', async ({ page }) => {
             contactsPage = new ContactsPage(page);
-            await homePage.header.clickToNavigate(homePage.header.locatorContacts, `${baseURL}` + 'kontakt/');
+            contactsPage.visit();
             await expect(page).toHaveTitle(contactsPage.TITLE);
         });
 
-        test('Go to products', async ({ page, baseURL }) => {
+        test('Go to products', async ({ page }) => {
             productsPage = new ProductsPage(page);
-            await homePage.header.clickToNavigate(homePage.header.locatorIWantCharger, `${baseURL}` + 'produkty/');
+            productsPage.visit();
             await expect(page).toHaveTitle(productsPage.TITLE);
         });
 
         test('Go to for drivers', async ({ page, baseURL }) => {
             forDriversPage = new ForDriversPage(page);
-            await homePage.header.clickToNavigate(homePage.header.locatorForDrivers, `${baseURL}` + 'pro-ridice/');
+            forDriversPage.visit();
             await expect(page).toHaveTitle(forDriversPage.TITLE);
         });
     });

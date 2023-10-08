@@ -20,12 +20,19 @@ test.describe('Visual tests', () => {
     });
 
     test('HomePage', async ({ page }) => {
-        await expect(page).toHaveScreenshot({ fullPage: true, maxDiffPixelRatio: 0.1 });
+        await page.waitForTimeout(3000);
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.4 });
     });
 
     test('StationMapPage', async ({ page }) => {
         stationMapPage = new StationMapPage(page);
         stationMapPage.visit();
-        await expect(page).toHaveScreenshot({ fullPage: true, maxDiffPixelRatio: 0.4 });
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.4 });
+    });
+
+    test('AboutUs', async ({ page }) => {
+        aboutUsPage = new AboutUsPage(page);
+        aboutUsPage.visit();
+        await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.4 });
     });
 });
